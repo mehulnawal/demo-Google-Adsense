@@ -60,7 +60,7 @@ export function AboutPage() {
       <div className="w-full md:w-4/6 mt-4">
         <GoogleAd
           adClient="ca-pub-3383945416257696"
-          adSlot="5780745916"
+          adSlot="3940256099942544:3119834574"
           style={{ display: "block", width: "100%", height: "250px" }}
         />
       </div>
