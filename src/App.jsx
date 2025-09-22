@@ -4,11 +4,15 @@ import { useEffect } from "react";
 // ------------------- Google Ad Component -------------------
 export function GoogleAd({ adClient, adSlot, style = {}, className = "" }) {
   useEffect(() => {
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error("Adsense error", e);
-    }
+    const timeout = setTimeout(() => {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.error("Adsense error", e);
+      }
+    }, 500); // wait 0.5 seconds to ensure the ad container is in the DOM
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
@@ -22,6 +26,7 @@ export function GoogleAd({ adClient, adSlot, style = {}, className = "" }) {
     ></ins>
   );
 }
+
 
 // ------------------- Pages -------------------
 export function HomePage() {
@@ -90,13 +95,6 @@ export function Navbar() {
 function App() {
   return (
     <div className="bg-gray-950 min-h-screen">
-      {/* Add AdSense script globally */}
-      <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3383945416257696"
-        crossOrigin="anonymous"
-      ></script>
-
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navbar />}>
@@ -108,5 +106,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
