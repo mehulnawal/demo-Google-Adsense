@@ -32,6 +32,7 @@ export function HomePage() {
       <div className="w-full md:w-4/6 text-center text-gray-200">
         <h1 className="text-2xl font-bold mb-4">Home Page</h1>
         <p>This is some demo text in the center of the Home page.</p>
+        <p>By Mehul</p>
       </div>
 
       {/* Ad below content */}
